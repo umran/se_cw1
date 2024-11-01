@@ -41,127 +41,194 @@
 \tableofcontents % insert the below for a table of contents
 \listoffigures % it is useful to include a list of figures at least in CW2 or if you end up using a lot in CW1
 
+\newpage
+
+\section{Introduction}
+    As with any engineering domain, the complex nature of software engineering projects demands careful coordination of the limited time, skills, and resources with which a team may fulfill their project goals. A poorly coordinated project where contributors work on a disparate set of tasks as and when they please is not very likely to succeed. A "process” can be thought of as something that introduces a “systematic method” to a project \citet{sethi}, with the aim of synchronizing teams and orienting them towards efficiently delivering on their project goals. Crucially, a process embodies a set of values deemed important in the context of a project. It is also important to recognize that several distinct processes can be derived from the same set of core values. In this case, the distinct processes can be said to belong to a “process class” or “method” that prioritizes a common set of values. This paper introduces "Agile" as a process class that prioritizes a very particular set of values that emerged with the proliferation of software over the last few decades. In the following sections, we provide an overview of Agile and introduce the reader to its core values. We also discuss frameworks that can be used to adopt an "Agile" structure across different aspects of a software development process. This is followed by a section on Agile practices and tools specifically for pair and team working. We then introduce the reader to the concept of serious games, and document our experience of the process of preparing to build a serious game within a team organized around Agile principles. Finally, we offer some reflections on the experience of pair working during the process of writing this paper.
+
 \section{Introduction to Agile}
-This is a brief description and introduction of AGILE.
+    \subsection{Overview}
+    The term "Agile" was coined in 2001 by a group of experienced, like-minded engineers, seeking to nudge the discipline of software engineering away from rigid, plan-driven processes \citet{sethi}. Since the dominant processes at the time mostly relied on rigid specifications, with little provision for adjustment, they lacked the ability to adapt to changing product requirements. Requirements could change for a multitude of reasons, and an increasingly competitive commercial software industry meant that the ability to respond promptly to changing market demands was becoming increasingly important. As we show below, several of the Agile values are motivated by this need to adapt. In a similar vein, Agile puts great emphasis on "working code" and shipping frequently \citet{agilemanifesto}. This is in line with Sethi's characterization of Agile as an "iterative model", where iterative models allow for periodic adjustments to be made. \cite{sethi}. Perhaps what distinguishes Agile from other iterative models is its emphasis on "people over process", which further demonstrates its opposition to not just rigidity of the product, but the process as a whole.
+    
+    \subsection{Agile Values}
+    The "Agile Manifesto" outlines a concise set of values that together capture the essence of Agile. They are as follows:
 
-\subsection{Motivation and What Existed Prior}
-This is section where we talk about the precursors to AGILE and their limitations.
-We should also set the stage for AGILE here by positioning it as a methodology that makes up for shortcomings in
-its precursors
+    \begin{itemize}
+        \item "Individuals and interactions over processes and tools" \citet{agilemanifesto}
+        \item "Working software over comprehensive documentation" \citet{agilemanifesto}
+        \item "Customer collaboration over contract negotiation" \citet{agilemanifesto}
+        \item "Responding to change over following a plan" \citet{agilemanifesto}
+    \end{itemize}
 
-\subsubsection{Waterfall}
-A brief description of Waterfall, along with its shortcomings
+    Valuing individuals over processes assumes that the team is "good", well-motivated and competent, and that these teams self-organize and choose the most appropriate process for the job \citet{agilemanifesto}. Thus, Agile does away with process rigidity, preferring instead the judgment of the team.
 
-\subsubsection{Iterative Waterfall}
-A brief description of Iterative Waterfall, along with its shortcomings
+    The emphasis on working software relates to the high priority Agile assigns to the customer. According to the Agile Manifesto, continuous delivery of the product allows a project to "embrace changing requirements, even late in development" and this is done to ensure the "customer's competitive advantage" \citet{agilemanifesto}.
 
-\subsubsection{V-Model}
-A brief description of the V-Model, along with its shortcomings
+    Customer collaboration reinforces the idea of being open to change, allowing customers an avenue to express changing requirements, and for developers to embrace them. This is also inline with the last rule, which explicitly reiterates the idea of "responding to change".
+    
+\section{Agile Frameworks and Practices}
+    We have already established the idea of a process as something that brings a systematic method to a project. More formally, a process defines the following in the context of a project:
 
-\subsubsection{Re-use Pattern}
-A brief description of the Re-use Pattern, along with its shortcomings
+    \begin{itemize}
+        \item key “activities” designed to bring a project closer to its goals 
+        \item the deliverables of each activity, also known as “artifacts” 
+        \item “roles” and “skills” that determine the success of each activity
+        \item “criteria” for activity completion
+        \item “events” that enable the team to reflect on progress and plan ahead
+    \end{itemize} 
+    \citet{sethi}
+    
+    None of the above components exists in isolation. That is to say that the activities, deliverables, criteria and events together embody the values deemed core to the process.
 
-\subsubsection{Formal Pattern}
-A brief description of the Formal Pattern, along with its shortcomings
+    This section introduces some key Agile frameworks, namely Scrum and XP. For the rest of this paper, "framework" should be interpreted as something that partially defines a process \citet{sethi}. While a framework need not define every aspect of a process, it brings structure to some key elements.
 
-\subsubsection{Evolutionary Pattern or Prototyping}
-A brief description of the Evolutionary Pattern, along with its shortcomings
+    
+    \subsection{Scrum}
+        Scrum is an Agile framework that offers structure in terms of events and team interactions, and is designed to drive a project towards its evolving objectives. It prescribes a mechanism to keep track of a project's progress, along with a feedback component that continually aligns the team and customer expectations based on the most up-to-date state of the project and its requirements. It can be thought of as providing an organizational backbone to a development team, allowing individual team members to work as a unit, in clearly defined roles.
 
-\subsubsection{Spiral Model}
-A brief description of the Spiral Model, along with its shortcomings
+        \subsubsection{Roles and Responsibilities}
+        Scrum prescribes the following roles:
+        \begin{itemize}
+            \item Product Owner
+            \item Developer
+            \item Scrum Master
+        \end{itemize}
 
-\subsection{AGILE Processes and Methodologies}
-In this section, we deep dive into AGILE and its specific manifestations, while giving a critical overview.
+        The product owner acts as an interface between the development team and the customer. The product owner is responsible for prioritizing tasks through a process of balancing between customer expectations and team capacity \citet {sethi}.
 
-\subsubsection{TDD}
-Brief description of TDD and critical analysis
+        The Scrum master is responsible for scheduling events and ensures that the entire process runs smoothly from sprint to sprint. They are also responsible for making sure everyone on the team is synchronized and able to make progress towards their individual goals \citet{sethi}.
+ 
+        \subsubsection{Sprints and the Product Backlog}
+        Scrum revolves around the idea of a "sprint", which is a clearly defined duration of time within which a development team works to complete a set of development tasks. Sprints are the main activity of Scrum, and they occur frequently over the lifetime of a project. The specific duration of a sprint is team-specific, and Sethi strongly advises that it be kept under a month \citet{sethi}.
 
-\subsubsection{Extreme Programming}
-Brief description of Extreme Programming and critical analysis
+        Sprints exist in the context of an overall "project backlog", which tracks a product's requirements in the form of actionable tasks. At the end of each sprint, a team ends up with a "product increment", which contributes to the next iteration of the product. The product increment roughly consists of a combination of new features, bug fixes and refactors that the team was able to implement during the sprint. Scrum prescribes a set of events that happen before, during and after each sprint that are designed to ensure the team stays on track \citet{sethi}.
 
-\subsubsection{SCRUM}
-Brief description of SCRUM and critical analysis
+        \subsubsection{Sprint Planning}        
+        Sprint planning is a Scrum event that occurs at the beginning of each sprint. During sprint planning a team agrees on a "sprint goal" and selects the most appropriate tasks from the product backlog, which go into a "sprint backlog". The sprint goal sets a clear objective for the sprint and the sprint backlog is meant to reflect it. The entire development team, along with the product owner participates in this event. While the development team brings the developer's perspective to the discussion, the product owner is responsible for representing the customer and their needs \citet{sethi}.
+
+        \subsubsection{Daily Scrum}
+        This is an event that typically lasts a few minutes, intended to allow team members to share their progress with respect to their individual tasks within the sprint. This helps the team gain an awareness of the overall sprint status, exchange information with members working on related functionality and plan their specific activities accordingly \citet{sethi}.
+       
+        \subsubsection{Sprint Review and Retrospective}
+        Sprint reviews are conducted at the end of each sprint, during which the Scrum team presents what was accomplished during the sprint to stakeholders \citet{sethi}. At the end of a sprint review, the product backlog may be updated to reflect the progress that was made \citet{sethi}.
+
+        Sprint Retrospectives enable the Scrum team to reflect on and evaluate how well they worked during the sprint so that improvements can be identified.
+        
+        \subsubsection{Caveats and Limitations}
+        It is important to keep in mind that Scrum is merely a framework that primarily addresses how to align a team towards achieving its high level product goals. While it provides some structure in terms of defining key roles and events, details like choosing an appropriate sprint length and event durations are left mostly up to the team, which means that a certain level of experience is assumed. In the real world, younger teams may lack the experience to effectively utilize the framework.
+        
+        Moreover, Scrum does not describe how the team should go about achieving its software tasks. As such, Scrum alone is probably not sufficient for quality assurance. There are other frameworks aligned with Agile that inform good software development practices, such as XP, which may be used in combination with Scrum.
+
+        Finally, it is worth noting that Scrum can be useful even for teams that do not necessarily view adaptability to changing requirements as essential. For example, teams that are plan-driven have been known to use the daily standup, review and retrospective aspects of Scrum, which facilitates the implementation of chunks of a larger design \citet{sethi}.
+
+    \subsection{Extreme Programming (XP)}
+        \subsubsection{Introduction}
+        XP is a framework composed of a set of values, principles and practices. Its values are the abstract concepts it considers important over others, and underpin its principles and practices.
+
+        XP considers the following as its core values:
+            \begin{itemize}
+                \item Communication
+                \item Simplicity
+                \item Feedback
+                \item Courage
+                \item Respect
+            \end{itemize}
+
+        XP emphasizes the importance of communication flow, which it considers critical for knowledge transfer \citet{beck2000extreme}. Simplicity is complimentary to communication in that, the simpler a thing is, the more transferable it becomes \citet{beck2000extreme}. Feedback is considered a core value as XP, in true Agile fashion, recognizes that circumstances change, and so what may be correct in one instance may not be in another. Feedback is therefore crucial for knowing when to change direction \citet{beck2000extreme}. Courage is what underpins action, and while XP values action in the face of uncertainty, it also encourages taking responsibility for it and improving oneself via feedback.
+
+        Similar to Scrum, XP emphasizes short development cycles and incremental planning \citet{beck2000extreme}. This paper focuses on the complimentary elements of XP, namely the practices that guide excellence in software development.
+      
+        \subsubsection{Test Driven Development}
+        As with Agile, XP places an emphasis on working software. Test driven development is a paradigm that allows teams to continuously implement new features with the confidence that their contributions will eventually result in working software. The idea is to write tests that validate a set of functionality before implementing the actual functionality. With each incremental contribution towards implementing a feature, developers can immediately test if it meets the actual requirements \citet{sethi}. This assumes that tests correctly capture all of a feature's requirements. In reality this is quite hard to do as there might exist some corner cases which are untestable, or it may simply be infeasible to cover every single test case. 
+
+        \subsubsection{Continuous Integration}
+        In the spirit of "working software", XP encourages the practice of continuous integration. While development teams may implement different product features individually, features do not exist in isolation. Continuous integration is a practice that encourages the frequent validation of the product as a whole, which may include automated integration tests. This process allows development teams to get immediate feedback when certain parts of the product fail to work in unison with the rest \citet{sethi}. Similar to unit tests, continuous integration enables teams to confidently introduce new features and refactor existing code, with the assurance that it will eventually result in working code.
+
+        \subsubsection{Refactoring}
+        Refactoring is an important part of extreme programming as it embodies simplicity. Refactoring may be defined as a way to rewrite code in simpler terms, while preserving the external functionality of the product \citet{sethi}. XP encourages periodic refactoring as a way to simplify the design process. Since XP emphasizes keeping design efforts proportionate to the immediate and well-defined requirements of a product so far, refactoring can be an efficient way to design in increments, as specific features are being worked on. Constant and too frequent refactoring can however, hamper the progress of a project, as refactoring efforts divert resources away from implementing new or unfinished features.
+        
+
+\section{Pair and Team Practices and Tools}
+    \subsection{Practices}
+        Processes may also include what Sethi calls "practices" (not to be confused with "activities"). While activities are general and context-free, practices are more specific descriptions of actions situated within a time and place \citet{sethi}. Practices are therefore considered "actionable" and unambiguous with respect to what is expected of the team. For example, while a process may identify "testing" as an activity, a practice related to testing may prescribe something like "test before each release", clearly identifying the conditions under which some action should be carried out. Taken together, Scrum and XP offer a comprehensive set of practices that enhance the team and pair working experience. We highlight a few of these practices below.
+        
+        \subsubsection{Pair Programming}
+        This is a process by which two developers work together on a problem in real-time. They take turns being the "driver" and "navigator". The driver role is responsible for "completing the goal at hand", while the "navigator" role reviews the code as its being written. \citet{pairprogramming}. The idea is for the driver and navigator to communicate while they're going through the problem. While the driver talks through what they are currently doing, and their thought-process behind it, the navigator keeps an eye out for potential bugs and maintains a general awareness of the broader context in which the code is being written \citet{pairprogramming}. This is expected to produce code of a higher quality, as code is constantly being reviewed by another set of eyes at the same time as its being written \citet{pairprogramming}.
+        
+        \subsubsection{Planning Poker}
+        Planning poker is a method of estimating the effort required to implement a task utilized during sprint planning. For a given task proposed by the product owner, each member of the team, regardless of their role, independently produces a number called "story points" that represents the effort required to implement the task \citet{planningPoker}. This process is repeated until all members achieve a consensus on the story points estimate for the given task, where those producing the least and highest values are encouraged to explain their reasoning to the rest of the team \citet{planningPoker}. The key idea is that factoring in diverse perspectives will tend to produce more accurate estimates. A caveat of using this method is that estimates tend to be significantly more accurate when more experienced members are involved \citet{planningPoker}. 
+        
+        \subsubsection{Code Reviews}
+        Code reviews are a quality control practice widely used by both open-source and commercial software projects. As the name suggests, code reviews involve someone reviewing another person's code and validating it against best practices and coding standards adopted by the team, before considering the code mergable with the project's main codebase. A study by Microsoft on the effectiveness of code reviews found that reviews tend to be more useful the more familiar the reviewers were with the codebase, suggesting that reviewer selection is crucial \citet{codereviews}.
+
+    \subsection{Tools}
+        \subsubsection{Version Control}
+        Version control software are tools that help maintain a codebase by keeping a strict state of the codebase across multiple mutations 
+        \subsubsection{Project Management}
+        \subsubsection{Realtime Collaboration}
+        \subsubsection{Communication Platforms}
+        \subsubsection{Testing and Continuous Integration}
+
+\section{Serious Games}
+    \subsubsection{Description}
+    The occurrence of "Serious" and "Game" together may seem like an oxymoron. Indeed how can something be both serious and a game at the same time. Taken literally, it may well be an oxymoron, but we show that serious games are a valid category of games that are distinct from games meant purely for entertainment.
+    
+    The first usage of Serious Games as we interpret it is credited to a researcher named Clark Abt, who is known for designing a military simulation game called T.E.M.P.E.R \citet{origins}. In his book titled Serious Games, Abt gives the following description: "Games may be played seriously or casually. We are concerned with serious games in the sense that these games have an explicit and carefully thought-out educational purpose and are not intended to be played primarily for amusement. This does not mean that serious games are not, or should not be, entertaining." \citet{origins}.
+
+    Another more recent definition, given by Chen and Michael, is as follows: "Games that do not have entertainment, enjoyment or fun as their primary purpose" \citet{alternativeDefinition}. This definition, however, leaves the question of what it is that makes a game "serious" up for debate.
+
+    Building on these two definitions, we highlight the following attributes that we believe are essential for a game to be considered a "serious game":
+        \begin{itemize}
+            \item it is a game in the sense that it has a "gameplay" objective
+            \item it has an educational component
+            \item the educational component is explicit and carefully thought out
+            \item its primary purpose is not for entertainment
+        \end{itemize}
+
+    The criteria specified above is left intentionally weak, so as to capture a multitude of different styles of games. This criteria would however, preclude most mainstream commercial games as they are produced primarily for entertainment.
+
+    
+
+    \subsubsection{Segmentation}
+    One way of segmenting games is by application areas or industry, such as "military, government, education, corporate, healthcare" \citet{seriousgamesoverview}. We find that this is too simplistic a classification to accurately convey the homogeneity of serious games. 
+
+    A more complex, but more useful model for classification is proposed by Djaouti, Alvarez and Jessel. They propose a classification system that considers both "serious" and "game" dimensions, called the "Gameplay/Purpose/Scope" (G/P/S) model \citet{classification}.
+
+    Under this model, "gameplay" roughly translates to "how" a game is played, and may take into account the particular type of game mechanics present and how the user interacts with the game \citet{classification}. The authors further classify gameplay into "play-based" and "game-based", where the rules of the game differ based on these two categories \cite{classification}. They note that "game-based" games present the user with a win condition, whereas "play-based" games do not necessarily have such clear cut rules \citet{classification}.
+    
+    The "purpose" aspect captures the post-hoc purpose or intended experience the user leaves with after playing the game. It is important to note that this is distinct from the in-game entertainment aspect of the game. \citet{classification}. 
+    
+    Finally, the scope covers the target market and broader application of the game.
+
+    \subsection{Building A Serious Game: A Group Experience}
+        The authors of this paper are part of a group of seven tasked with building a serious game. In this section we document the process that was used to choose an appropriate game to develop. We also discuss the software development frameworks and practices we considered and ended up adopting for the project.
+        \subsubsection{Deciding on a Game to Build}
+        We had an initial brainstorming session, where the entire group was present and we each proposed various ideas that we were individually interested in. After we had a few good sounding ideas, we analyzed each idea more critically by evaluating them against the following:
+            \begin{itemize}
+                \item what is the in game objective?
+                \item how is the objective "gamified"?
+                \item how is it interactive?
+                \item how is it educational?
+                \item what is the learning objective?
+                \item who is it for?
+            \end{itemize}
+
+        While our evaluation approach was not a direct application of the "G/P/S" model, we note that our criteria closely resembled the "gameplay", "purpose" and "scope" attributes of the model. And we determined that this was sufficient for a fair evaluation of the candidate ideas we had. This approach allowed us to narrow down potential candidates to games with one main type of gameplay: agent-based simulation. We then had our initial customer meeting during which we received some crucial feedback on our initial ideas. This allowed us to come up with initial user stories and gameplay mechanics, which we then brought into our second customer meeting for further feedback. This iterative process culminated in the final group decision to build an "Epidemic Response Simulator". This was a democratic process where each member voted for one of two ideas that were presented at the second customer meeting.
+
+        \subsubsection{Justification of Processes and Tools Selected}
+        Initially, the group lacked much organizational structure. However, from the very outset, we embodied the values of respect and democracy, where everyone's opinions mattered. By the end of the first week, we had set up a few communication channels, carefully chosen such that they would allow the team to document meetings and other organizational information easily. Microsoft teams was chosen specifically for its "Teams" feature, which allowed groups of people to collaborate on and share documents in one central place. We also set up a Whatsapp group for more casual communication between group members.
+
+        By the end of the second customer meeting, and once we had an idea of the complexity of the project ahead of us, we decided to adopt an Agile process that would help initialize and keep the project on track. Scrum and XP was adopted specifically due to the uncertain requirements around the project as it exists right now, and in anticipation of a high degree of product evolution as we move forward. To aid us with a Scrum organizational structure, we decided to use Github organizations for its project management features, where we set up a group organization and created an initial repository dedicated to maintaining documentation. We decided to use the Github issue tracker for each of our repositories to use as a way to document actionable tasks within each repository. We then set up a Github project where relevant tasks would be imported into a table that we treat as a "product backlog". We also set up 8 one-week sprints within the Github project, each with its own dedicated "sprint backlog". 
+        
+        \subsubsection{Pair Experience and Skills in Relation to the Group}
+        - talk about how our own experience and skills relate to the processes and tools the group has adopted, as well as the opportunities they bring
 
 \section{Reflections on Pairworking}
-
-\subsection{Tools and Practices}
-Talk about the formal practices and tools we used to work on this project
-
-\subsubsection{Git and Github}
-Talk about how we used git and github and how it affected our workflow
-
-\subsubsection{Teams and Teams Documents}
-Talk about how we used teams and teams documents and how it affected our workflow
-
-\subsubsection{Pair Programming}
-Talk about the workflow that was established in order to complete the task. Talk about how viable it was and how it impacted your work.
-
-% \paragraph{Smaller still?}
-% some arbitrary text, for a picture of agile methodology see Figure~\ref{fig:agile}
-
-% % The following syntax creates a bullet point list
-% \begin{itemize}
-% \item Reason why agile great
-% \item Reason why agile bad
-% \item Reason why agile \textbf{neutral}
-% \end{itemize}
-
-% An example of a numbered list, again you can do this in 'Rich Text' style
-% \begin{enumerate}
-% \item First point in numbered list
-% \item Second point in numbered list
-% \end{enumerate}
-
-% You may want to highlight some text, \hl{the default colour for this is yellow}
-
-% \includecomment{You can use this syntax as an alternative to the percentage sign for writing big blocks of comment.}
-% the syntax you need in order to include graphics
-% centering prevents the image from being left aligned
-% Width determines how big the image is
-% You can use a label so that you can reference the image within your text
-% the [!h] makes the image sit within the next (experiment with removing this)
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.7\textwidth]{agilePic}\caption{Agile methodology picture.}\label{fig:agile} 
-% \end{figure}
-
-% \subsection{How to cite}
-
-% Agile is great according to \citet{schwaber:2002}. To achieve this style of citation include the syntax \verb|\citet{}|
+    \subsection{Collaborative Methods and Processes}
+    \subsection{An Evaluation of Pairworking Experiences}
 
 
 
-% Agile is great \citep{schwaber:2002}. To include this style of citation, use \verb|\citep{}|.
-
-% An example of a citation from an online resource is \cite{WinNT}.
-
-% \section{This is my evaluation of methodology X}
-
-%An example table
-% \begin{table}[htb]
-% \caption{An example table}
-% \bigskip
-% \begin{center}
-% \label{Example-Table}
-% \begin{tabular}{|l|l|}
-% \hline
-% Items & Values \\
-% \hline
-% \hline
-% Item 1 & Value 1 \\
-% Item 2 & Value 2 \\
-% \hline
-% \end{tabular}
-% \end{center}
-% \end{table}
-
-% \section{This is my evaluation of tool Y}
-% \section{This is my evaluation of practice Z}
-
-
-
-
+\newpage
 \bibliography{thisismybib}
 \end{document}
-
-
